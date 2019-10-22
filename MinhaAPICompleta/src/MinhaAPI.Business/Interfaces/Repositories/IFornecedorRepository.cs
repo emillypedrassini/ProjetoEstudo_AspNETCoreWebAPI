@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MinhaAPI.Business.Interfaces.Repositories
 {
-    interface IFornecedorRepository
+    public interface IFornecedorRepository
     {
     }
 }

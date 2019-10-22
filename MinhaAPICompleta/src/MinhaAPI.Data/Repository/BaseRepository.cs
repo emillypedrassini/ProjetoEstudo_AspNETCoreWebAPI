@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MinhaAPI.Data.Repository
 {
-    public class FornecedorRepository
+    public class BaseRepository
     {
     }
 }

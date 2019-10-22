@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MinhaAPI.API.ViewModels;
+using MinhaAPI.Business.Models;
 
 namespace MinhaAPI.API.Configuration
 {
@@ -10,7 +8,11 @@ namespace MinhaAPI.API.Configuration
     {
         public AutoMapperConfig()
         {
-            //CreateMap<Origem, Destino>().ReverseMap();
+            //CreateMap<De, Para>();
+
+            CreateMap<Fornecedor, FornecedorViewModel>().ReverseMap();
+            CreateMap<Produto, ProdutoViewModel>().ReverseMap();
+            CreateMap<Endereco, EnderecoViewModel>().ReverseMap();
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MinhaAPI.Business.Interfaces.Repositories;
+using MinhaAPI.Data.Repository;
 
 namespace MinhaAPI.API.Configuration
 {
@@ -10,6 +8,10 @@ namespace MinhaAPI.API.Configuration
     {
         public static IServiceCollection ResolveDependencies(this IServiceCollection services)
         {
+            //Mapear as injeções de dependencias
+
+            //services.AddScoped<IFornecedorRepository, FornecedorRepository>();
+
             return services;
         }
     }
