@@ -6,7 +6,7 @@ namespace MinhaAPI.Business.Models
 {
     public class Endereco : Entity
     {
-        public Guid ForncedorId { get; set; }
+        public Guid FornecedorId { get; set; }
 
         public string Logradouro { get; set; }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MinhaAPI.Business.Models
 {
-    public class Produto
+    public class Produto : Entity
     {
         public Guid FornecedorId { get; set; }
 

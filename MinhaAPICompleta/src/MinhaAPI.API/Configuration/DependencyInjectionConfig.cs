@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MinhaAPI.Business.Interfaces.Repositories;
-using MinhaAPI.Data.Repository;
 
 namespace MinhaAPI.API.Configuration
 {

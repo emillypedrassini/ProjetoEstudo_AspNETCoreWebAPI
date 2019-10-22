@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Notifications\" />
-    <Folder Include="Services\" />
+    <Folder Include="Models\Validations\Documentos\" />
   </ItemGroup>
 
 </Project>
