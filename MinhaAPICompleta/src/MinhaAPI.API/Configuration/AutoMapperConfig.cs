@@ -10,7 +10,7 @@ namespace MinhaAPI.API.Configuration
     {
         public AutoMapperConfig()
         {
-
+            //CreateMap<Origem, Destino>().ReverseMap();
         }
     }
 }
