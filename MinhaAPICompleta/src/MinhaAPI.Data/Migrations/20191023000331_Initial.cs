@@ -8,18 +8,18 @@ namespace MinhaAPI.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Fornecedor",
+                name: "Fornecedore",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    Documento = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(type: "varchar(200)", nullable: false),
+                    Documento = table.Column<string>(type: "varchar(14)", nullable: false),
                     Ativo = table.Column<bool>(nullable: false),
                     TipoFornecedor = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fornecedor", x => x.Id);
+                    table.PrimaryKey("PK_Fornecedore", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -28,23 +28,23 @@ namespace MinhaAPI.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     FornecedorId = table.Column<Guid>(nullable: false),
-                    Logradouro = table.Column<string>(nullable: true),
-                    Numero = table.Column<string>(nullable: true),
-                    Complemento = table.Column<string>(nullable: true),
-                    Cep = table.Column<string>(nullable: true),
-                    Bairro = table.Column<string>(nullable: true),
-                    Cidade = table.Column<string>(nullable: true),
-                    Estado = table.Column<string>(nullable: true)
+                    Logradouro = table.Column<string>(type: "varchar(200)", nullable: false),
+                    Numero = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Complemento = table.Column<string>(type: "varchar(250)", nullable: true),
+                    Cep = table.Column<string>(type: "varchar(8)", nullable: false),
+                    Bairro = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Cidade = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Estado = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Endereco", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Endereco_Fornecedor_FornecedorId",
+                        name: "FK_Endereco_Fornecedore_FornecedorId",
                         column: x => x.FornecedorId,
-                        principalTable: "Fornecedor",
+                        principalTable: "Fornecedore",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,9 +53,9 @@ namespace MinhaAPI.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     FornecedorId = table.Column<Guid>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    Descricao = table.Column<string>(nullable: true),
-                    Imagem = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(type: "varchar(200)", nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(1000)", nullable: false),
+                    Imagem = table.Column<string>(type: "varchar(100)", nullable: false),
                     Valor = table.Column<decimal>(nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     Ativo = table.Column<bool>(nullable: false)
@@ -64,11 +64,11 @@ namespace MinhaAPI.Data.Migrations
                 {
                     table.PrimaryKey("PK_Produto", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Produto_Fornecedor_FornecedorId",
+                        name: "FK_Produto_Fornecedore_FornecedorId",
                         column: x => x.FornecedorId,
-                        principalTable: "Fornecedor",
+                        principalTable: "Fornecedore",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -92,7 +92,7 @@ namespace MinhaAPI.Data.Migrations
                 name: "Produto");
 
             migrationBuilder.DropTable(
-                name: "Fornecedor");
+                name: "Fornecedore");
         }
     }
 }

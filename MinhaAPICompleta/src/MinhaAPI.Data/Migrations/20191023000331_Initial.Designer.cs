@@ -10,7 +10,7 @@ using MinhaAPI.Data.Context;
 namespace MinhaAPI.Data.Migrations
 {
     [DbContext(typeof(MinhaApiDbContext))]
-    [Migration("20191022222526_Initial")]
+    [Migration("20191023000331_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,21 +26,34 @@ namespace MinhaAPI.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Bairro");
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Cep");
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("varchar(8)");
 
-                    b.Property<string>("Cidade");
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Complemento");
+                    b.Property<string>("Complemento")
+                        .HasColumnType("varchar(250)");
 
-                    b.Property<string>("Estado");
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
 
                     b.Property<Guid>("FornecedorId");
 
-                    b.Property<string>("Logradouro");
+                    b.Property<string>("Logradouro")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)");
 
-                    b.Property<string>("Numero");
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 
@@ -57,15 +70,19 @@ namespace MinhaAPI.Data.Migrations
 
                     b.Property<bool>("Ativo");
 
-                    b.Property<string>("Documento");
+                    b.Property<string>("Documento")
+                        .IsRequired()
+                        .HasColumnType("varchar(14)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)");
 
                     b.Property<int>("TipoFornecedor");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Fornecedor");
+                    b.ToTable("Fornecedore");
                 });
 
             modelBuilder.Entity("MinhaAPI.Business.Models.Produto", b =>
@@ -77,13 +94,19 @@ namespace MinhaAPI.Data.Migrations
 
                     b.Property<DateTime>("DataCadastro");
 
-                    b.Property<string>("Descricao");
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<Guid>("FornecedorId");
 
-                    b.Property<string>("Imagem");
+                    b.Property<string>("Imagem")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)");
 
                     b.Property<decimal>("Valor");
 
@@ -98,16 +121,14 @@ namespace MinhaAPI.Data.Migrations
                 {
                     b.HasOne("MinhaAPI.Business.Models.Fornecedor", "Fornecedor")
                         .WithOne("Endereco")
-                        .HasForeignKey("MinhaAPI.Business.Models.Endereco", "FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MinhaAPI.Business.Models.Endereco", "FornecedorId");
                 });
 
             modelBuilder.Entity("MinhaAPI.Business.Models.Produto", b =>
                 {
                     b.HasOne("MinhaAPI.Business.Models.Fornecedor", "Fornecedor")
                         .WithMany("Produtos")
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FornecedorId");
                 });
 #pragma warning restore 612, 618
         }
