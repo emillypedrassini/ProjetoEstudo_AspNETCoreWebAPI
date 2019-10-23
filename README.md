@@ -9,4 +9,4 @@ install-package AutoMapper.Extensions.Microsoft.DependencyInjection
 Add-Migration Initial
 
 #Criar o banco
-update-database
+update-database --verbose
